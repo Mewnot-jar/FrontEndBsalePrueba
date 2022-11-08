@@ -1,30 +1,38 @@
 
-const contenido = document.querySelector('#contenido')
+const contenido = document.querySelector('#content')
+const categories = document.querySelectorAll('.category')
 document.addEventListener('DOMContentLoaded', function(){
-    obtenerDatos()
+    getProducts()
 })
-function obtenerDatos(){
-    fetch('http://localhost:8000/api/products/')
+function getProducts(category = null){
+    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
     .then(res => res.json())
     .then(data => {
-        llenar(data)
+        fill(data)
     })
 }
-function llenar(datos){ 
-    datos.forEach(dato => {
+
+function fill(data){ 
+    contenido.innerHTML = ''
+    data.forEach(d => {
         contenido.innerHTML += `
             <div class="card col" style="width: 18rem;">
-                <img src="${dato.url_image}" class="card-img-top " alt="product_image">
+                <img src="${d.url_image}" class="card-img-top " alt="product_image">
                 <div class="card-body">
-                    <h5 class="card-title">${dato.name}</h5>
+                    <h5 class="card-title">${d.name}</h5>
                     <div class="d-flex justify-content-around">
-                        <p class="card-text">${dato.discount ? '<del>' + dato.price + '</del>' : dato.price}</p>
-                        ${dato.discount ? '<p class="card-text">'+ (dato.price * dato.discount)/100 +'</p>': ''}
-                        ${dato.discount ? '<p class="card-text">' + dato.discount + '%</p>' : ''}
+                        <p class="card-text">${d.discount ? '<del>' + d.price + '</del>' : d.price}</p>
+                        ${d.discount ? '<p class="card-text">'+ (d.price * d.discount)/100 +'</p>': ''}
+                        ${d.discount ? '<p class="card-text">' + d.discount + '%</p>' : ''}
                     </div>
                     <a href="#" class="btn btn-primary">Comprar</a>
                 </div>
             </div>
         `
     });
+}
+for (let i = 0; i < categories.length; i++) {
+    categories[i].addEventListener('click', function(){
+        getProducts(i+1)
+    })
 }
