@@ -39,9 +39,9 @@ function fill(data){
                             <h5 class="card-title">${d.name}</h5>
                             <div class="d-flex justify-content-around">
                                 ${d.discount ? '<div class="discount-container"><p class="card-text discount">' + d.discount + '%</p></div>' : ''}
-                                <div class="discount-container">
-                                <p class="card-text font-weight-bold">${d.discount ? '<del>' + '$' + numericFormat(d.price) + '</del>' : '$' + numericFormat(d.price)}</p>
-                                ${d.discount ? '<p class="card-text font-weight-bold">'+ '$' + numericFormat(Math.round(( d.price - (d.price * d.discount)/100 ))) +'</p>': ''}
+                                <div class="price-container">
+                                    <p class="card-text font-weight-bold">${d.discount ? '<del>' + '$' + numericFormat(d.price) + '</del>' : '$' + numericFormat(d.price)}</p>
+                                    ${d.discount ? '<p class="card-text font-weight-bold">'+ '$' + numericFormat(Math.round(( d.price - (d.price * d.discount)/100 ))) +'</p>': ''}
                                 </div>
                             </div>
                         </div>
