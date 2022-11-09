@@ -14,7 +14,7 @@ function getProducts(category = null){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`https://leafy-griffin-045aab.netlify.app/api/products/${category ? category : ''}`)
+    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
     .then(res => res.json())
     .then(data => {
         fill(data)
@@ -76,7 +76,7 @@ function searchProducts(search){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`https://leafy-griffin-045aab.netlify.app/api/products/search/${search ? search : ''}`)
+    fetch(`http://localhost:8000/api/products/search/${search ? search : ''}`)
     .then(res => res.json())
     .then(data => {
         if(data.length){
