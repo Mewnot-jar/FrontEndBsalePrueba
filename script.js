@@ -76,7 +76,7 @@ function searchProducts(search){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/search/${search ? search : ''}`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/search/${search ? search : ''}`)
     .then(res => res.json())
     .then(data => {
         if(data.length){
