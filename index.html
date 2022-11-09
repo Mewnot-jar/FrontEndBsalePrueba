@@ -18,7 +18,7 @@
     <div id="carga"></div>
   </div>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a id="home_button" class="navbar-brand" href="#">BsaleTest</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -38,8 +38,14 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button id="button_search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
+          <button id="button_search" class="btn btn-success my-2 my-sm-0" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <circle cx="10" cy="10" r="7" />
+              <line x1="21" y1="21" x2="15" y2="15" />
+            </svg>
+          </button>
         </form>
       </div>
     </nav>
