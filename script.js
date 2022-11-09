@@ -14,7 +14,7 @@ function getProducts(category = null){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/${category ? category : ''}`)
     .then(res => res.json())
     .then(data => {
         fill(data)
