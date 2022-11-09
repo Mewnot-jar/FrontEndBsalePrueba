@@ -2,62 +2,64 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Hello, world!</title> 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Hello, world!</title>
 </head>
 
 <body>
   <div id="contenedor_carga">
     <div id="carga"></div>
   </div>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a id="home_button" class="navbar-brand" href="#">BsaleTest</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Categorias
-                  </a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item category" href="#">Bebidas Energeticas</a>
-                    <a class="dropdown-item category" href="#">Piscos</a>
-                    <a class="dropdown-item category" href="#">Ron</a>
-                    <a class="dropdown-item category" href="#">Bebidas</a>
-                    <a class="dropdown-item category" href="#">Snacks</a>
-                    <a class="dropdown-item category" href="#">Cervezas</a>
-                    <a class="dropdown-item category" href="#">Vodka</a>
-                  </div>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button id="button_search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a id="home_button" class="navbar-brand" href="#">BsaleTest</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item category" href="#">Bebidas Energeticas</a>
+              <a class="dropdown-item category" href="#">Piscos</a>
+              <a class="dropdown-item category" href="#">Ron</a>
+              <a class="dropdown-item category" href="#">Bebidas</a>
+              <a class="dropdown-item category" href="#">Snacks</a>
+              <a class="dropdown-item category" href="#">Cervezas</a>
+              <a class="dropdown-item category" href="#">Vodka</a>
             </div>
-          </nav>
-    </header>
-    <main>
-        <div class="container">
-            <div id="content" class="row row-cols-4">
-            </div>
-        </div>
-    </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="./script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button id="button_search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div id="alert-container" class="alert alert-warning mt-2" style="display: none;" role="alert">
+      </div>
+      <div id="content" class="row row-cols-4">
+      </div>
+    </div>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

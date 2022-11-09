@@ -32,3 +32,17 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+.discount-container{
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #eeac60;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    margin: 2rem;
+}
