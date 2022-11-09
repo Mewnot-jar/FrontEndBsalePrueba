@@ -14,13 +14,14 @@ function getProducts(category = null){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
+    fetch(`https://leafy-griffin-045aab.netlify.app/api/products/${category ? category : ''}`)
     .then(res => res.json())
     .then(data => {
         fill(data)
         if(data.length){
             contenedor.style.visibility = 'hidden';
             contenedor.style.opacity = '0'
+            document.querySelector('#alert-container').style.display = 'none'
         }
     })
 }
@@ -75,7 +76,7 @@ function searchProducts(search){
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/search/${search ? search : ''}`)
+    fetch(`https://leafy-griffin-045aab.netlify.app/api/products/search/${search ? search : ''}`)
     .then(res => res.json())
     .then(data => {
         if(data.length){
@@ -86,7 +87,7 @@ function searchProducts(search){
             contenedor.style.opacity = '0'
         }else{
             document.querySelector('#alert-container').style.display = 'flex'
-            document.querySelector('#alert-container').textContent = 'No se encontro el producto :('
+            document.querySelector('#alert-container').textContent = 'No se encontro el producto 🥸'
             console.log('no hay cosas')
             contenedor.style.visibility = 'hidden';
             contenedor.style.opacity = '0'
