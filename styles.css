@@ -71,3 +71,18 @@ header nav{
     display:block;
     height: 9rem;
 }
+.cart-container-modal{
+    margin-bottom: 1rem;
+    display: block;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: #e8eaec;
+}
+.cart-container-modal button{
+    border-radius: 2rem;
+}
+.cart-data-container{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
