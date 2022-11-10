@@ -46,3 +46,13 @@
 main{
     margin: 2rem;
 }
+header nav{
+    background-color: #e8eaec;
+}
+.container{
+    background-color: #e8eaec;
+    border-radius: 2rem;
+}
+.cards-container{
+    padding: 2rem;
+}

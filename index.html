@@ -18,28 +18,24 @@
     <div id="carga"></div>
   </div>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a id="home_button" class="navbar-brand" href="#">BsaleTest</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               Categorias
             </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item category" href="#">Bebidas Energeticas</a>
-              <a class="dropdown-item category" href="#">Piscos</a>
-              <a class="dropdown-item category" href="#">Ron</a>
-              <a class="dropdown-item category" href="#">Bebidas</a>
-              <a class="dropdown-item category" href="#">Snacks</a>
-              <a class="dropdown-item category" href="#">Cervezas</a>
-              <a class="dropdown-item category" href="#">Vodka</a>
+            <div id="categories" class="dropdown-menu">
             </div>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input id="input_search" class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-          <button id="button_search" class="btn btn-success my-2 my-sm-0" type="submit">
+          <button id="button_search" class="btn btn-primary my-2 my-sm-0" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <circle cx="10" cy="10" r="7" />
@@ -54,7 +50,7 @@
     <div class="container">
       <div id="alert-container" class="alert alert-warning mt-2" style="display: none;" role="alert">
       </div>
-      <div id="content" class="row row-cols-4">
+      <div id="content" class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 cards-container">
       </div>
     </div>
   </main>
