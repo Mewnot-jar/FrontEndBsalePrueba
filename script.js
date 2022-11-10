@@ -1,4 +1,4 @@
-
+//http://localhost:8000
 const content = document.querySelector('#content')
 const categoryContainer = document.getElementById('categories')
 const homeBtn = document.querySelector('#home_button')
@@ -48,7 +48,7 @@ function fill(data){
                 <div class="card m-2" style="height: 30rem">
                     <div class="card-body">
                         <div style="height: 60%;">
-                            <img src="${d.url_image}" class="card-img-top " alt="product_image">
+                            <img src="${d.url_image}" class="card-img-top " alt="product_image" style="height: 60%;">
                         </div>
                         <div style="height: 9rem">
                             <h5 class="card-title">${d.name}</h5>
