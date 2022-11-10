@@ -56,3 +56,18 @@ header nav{
 .cards-container{
     padding: 2rem;
 }
+.price-container{
+    display:block;
+    line-height: 10px;
+}
+.prices_discount-container{
+    height: 5rem;
+    margin-top: 2rem;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.data-container{
+    display:block;
+    height: 9rem;
+}

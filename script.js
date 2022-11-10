@@ -45,14 +45,16 @@ function fill(data){
     data.forEach(d => {
         content.innerHTML += `
             <div>
-                <div class="card m-2" style="height: 30rem">
+                <div class="card m-2" style="height: 35rem">
                     <div class="card-body">
                         <div style="height: 60%;">
                             <img src="${d.url_image}" class="card-img-top " alt="product_image" style="height: 100%;">
                         </div>
-                        <div style="height: 9rem">
-                            <h5 class="card-title">${d.name}</h5>
-                            <div class="d-flex justify-content-around">
+                        <div class="data-container">
+                            <div style="height: 30%;">
+                                <h5 style="text-align: center;" class="card-title">${d.name}</h5>
+                            </div>
+                            <div class="prices_discount-container">
                                 ${d.discount ? '<div class="discount-container"><p class="card-text discount">' + d.discount + '%</p></div>' : ''}
                                 <div class="price-container">
                                     <p class="card-text font-weight-bold">${d.discount ? '<del>' + '$' + numericFormat(d.price) + '</del>' : '$' + numericFormat(d.price)}</p>
@@ -60,18 +62,20 @@ function fill(data){
                                 </div>
                             </div>
                         </div>
-                        <center>
-                            <a href="#" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <circle cx="6" cy="19" r="2" />
-                                <circle cx="17" cy="19" r="2" />
-                                <path d="M17 17h-11v-14h-2" />
-                                <path d="M6 5l6.005 .429m7.138 6.573l-.143 .998h-13" />
-                                <path d="M15 6h6m-3 -3v6" />
-                                </svg>
-                            </a>
-                        </center>
+                        <div style="height: 2rem; margin-top: 2rem;">
+                            <center>
+                                <a href="#" class="btn btn-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="6" cy="19" r="2" />
+                                    <circle cx="17" cy="19" r="2" />
+                                    <path d="M17 17h-11v-14h-2" />
+                                    <path d="M6 5l6.005 .429m7.138 6.573l-.143 .998h-13" />
+                                    <path d="M15 6h6m-3 -3v6" />
+                                    </svg>
+                                </a>
+                            </center>
+                        </div>
                     </div>
                 </div>
             </div>
