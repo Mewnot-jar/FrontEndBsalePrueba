@@ -249,7 +249,8 @@ function actualizarCarrito() {
     totalPrice.innerText = '$' + numericFormat(carrito.reduce((acc, prod) => acc + ((prod.discount ? (prod.price - (prod.price * prod.discount) / 100) : prod.price) * prod.cantidad), 0))
 }
 
-$('#open-cart').on('click', function () {
+$('#open-cart').on('click', function (e) {
+    e.preventDefault()
     $('#ventana-modal').modal()
     emptyCartVerify()
 })
