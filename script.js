@@ -35,7 +35,7 @@ function getProducts(category = null) {
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/${category ? category : ''}`)
         .then(res => res.json())
         .then(data => {
             productos = [
@@ -52,7 +52,7 @@ function getProducts(category = null) {
         })
 }
 function getCategories() {
-    fetch(`http://localhost:8000/api/fillCategories`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/fillCategories`)
         .then(res => res.json())
         .then(data => {
             fillCategories(data)
@@ -183,7 +183,7 @@ function searchProducts(search) {
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`http://localhost:8000/api/products/search/${search ? search : ''}`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/search/${search ? search : ''}`)
         .then(res => res.json())
         .then(data => {
             if (data.length) {
