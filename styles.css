@@ -87,7 +87,7 @@ header nav{
     margin-bottom: 1rem;
 }
 .page-container{
-    height: 4rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
 }
