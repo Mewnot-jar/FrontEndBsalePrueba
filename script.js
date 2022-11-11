@@ -11,46 +11,58 @@ let mensajeError
 let productos = [];
 let carrito = [];
 const contenedorCarrito = document.getElementById('carrito-contenedor')
+const clearButton = document.getElementById('clear-button')
+const totalPrice = document.getElementById('total-price')
+let cantidad = {cantidad: 1}
 btnSearch.disabled = true
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     getProducts()
     getCategories()
 })
-function getProducts(category = null){
+clearButton.addEventListener('click', function () {
+    for (let i = 0; i < carrito.length; i++) {
+        carrito[i].cantidad = 1
+    }
+    carrito.length = 0
+    actualizarCarrito()
+    emptyCartVerify()
+})
+function getProducts(category = null) {
     inputEmpty()
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/${category ? category : ''}`)
-    .then(res => res.json())
-    .then(data => {
-        productos = [
-            data,
-        ]
-        fill(productos[0])
-        if(data.length){
-            contenedor.style.visibility = 'hidden';
-            contenedor.style.opacity = '0'
-            document.querySelector('#alert-container').style.display = 'none'
-        }
-    })
+    fetch(`http://localhost:8000/api/products/${category ? category : ''}`)
+        .then(res => res.json())
+        .then(data => {
+            productos = [
+                data,
+            ]
+            fill(productos[0])
+            if (data.length) {
+                contenedor.style.visibility = 'hidden';
+                contenedor.style.opacity = '0'
+                document.querySelector('#alert-container').style.display = 'none'
+            }
+        })
 }
-function getCategories(){
-    fetch(`https://backendbsaleprueba-production.up.railway.app/api/fillCategories`)
-    .then(res => res.json())
-    .then(data => {
-        fillCategories(data)
-        let categories = document.querySelectorAll('.category')
-        for (let i = 0; i < categories.length; i++) {
-            categories[i].addEventListener('click', function(){
-                getProducts(i+1)
-            })
-        }
-    })
+function getCategories() {
+    fetch(`http://localhost:8000/api/fillCategories`)
+        .then(res => res.json())
+        .then(data => {
+            fillCategories(data)
+            let categories = document.querySelectorAll('.category')
+            for (let i = 0; i < categories.length; i++) {
+                categories[i].addEventListener('click', function () {
+                    getProducts(i + 1)
+                })
+            }
+        })
 }
-function fill(products){ 
+function fill(products) {
     content.innerHTML = ''
     products.forEach(product => {
+        Object.assign(product, cantidad)
         content.innerHTML += `
             <div>
                 <div class="card m-2" style="height: 35rem">
@@ -66,7 +78,7 @@ function fill(products){
                                 ${product.discount ? '<div class="discount-container"><p class="card-text discount">' + product.discount + '%</p></div>' : ''}
                                 <div class="price-container">
                                     <p class="card-text font-weight-bold">${product.discount ? '<del>' + '$' + numericFormat(product.price) + '</del>' : '$' + numericFormat(product.price)}</p>
-                                    ${product.discount ? '<p class="card-text font-weight-bold">'+ '$' + numericFormat(Math.round(( product.price - (product.price * product.discount)/100 ))) +'</p>': ''}
+                                    ${product.discount ? '<p class="card-text font-weight-bold">' + '$' + numericFormat(Math.round((product.price - (product.price * product.discount) / 100))) + '</p>' : ''}
                                 </div>
                             </div>
                         </div>
@@ -92,68 +104,77 @@ function fill(products){
     btnAgregar = document.querySelectorAll('.btn-agregar')
 }
 setTimeout(() => {
-    console.log(btnAgregar)
     for (let i = 0; i < productos[0].length; i++) {
         btnAgregar[i].addEventListener('click', () => {
             agregarAlCarrito(productos[0][i].id)
         })
     }
 }, 5000);
-function agregarAlCarrito(product_id){
-    const product = productos[0].find((prod) => prod.id === product_id)
-    carrito.push(product)
+function agregarAlCarrito(product_id) {
+    const existe = carrito.some(prod => prod.id === product_id)
+    if (existe) {
+        const prod = carrito.map(prod => {
+            if (prod.id === product_id) {
+                prod.cantidad++
+            }
+            console.log(prod)
+        })
+    }else{
+        const product = productos[0].find((prod) => prod.id === product_id)
+        carrito.push(product)
+        console.log(carrito)
+    }
     actualizarCarrito()
-    console.log(carrito)
 }
-function fillCategories(data){ 
+function fillCategories(data) {
     data.forEach(d => {
         categoryContainer.innerHTML += `
             <a class="dropdown-item category" href="#">${d.name.toUpperCase()}</a>
         `
     });
 }
-homeBtn.addEventListener('click', function(){
+homeBtn.addEventListener('click', function () {
     getProducts()
 })
-function searchProducts(search){
+function searchProducts(search) {
     contenedor.style.visibility = 'visible';
     contenedor.style.opacity = '100'
     content.innerHTML = ''
-    fetch(`https://backendbsaleprueba-production.up.railway.app/api/products/search/${search ? search : ''}`)
-    .then(res => res.json())
-    .then(data => {
-        if(data.length){
-            fill(data)
-            document.querySelector('#alert-container').style.display = 'none'
-            contenedor.style.visibility = 'hidden';
-            contenedor.style.opacity = '0'
-        }else{
-            document.querySelector('#alert-container').style.display = 'flex'
-            document.querySelector('#alert-container').textContent = 'No se encontro el producto 🥸'
-            contenedor.style.visibility = 'hidden';
-            contenedor.style.opacity = '0'
-        }
-    })
+    fetch(`http://localhost:8000/api/products/search/${search ? search : ''}`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.length) {
+                fill(data)
+                document.querySelector('#alert-container').style.display = 'none'
+                contenedor.style.visibility = 'hidden';
+                contenedor.style.opacity = '0'
+            } else {
+                document.querySelector('#alert-container').style.display = 'flex'
+                document.querySelector('#alert-container').textContent = 'No se encontro el producto 🥸'
+                contenedor.style.visibility = 'hidden';
+                contenedor.style.opacity = '0'
+            }
+        })
 }
-btnSearch.addEventListener('click', function(e){
+btnSearch.addEventListener('click', function (e) {
     e.preventDefault()
     searchProducts(inputSearch.value)
 })
 inputSearch.addEventListener('keyup', inputEmpty)
-function inputEmpty(){
-    if(!inputSearch.value){
+function inputEmpty() {
+    if (!inputSearch.value) {
         btnSearch.disabled = true
-    }else{
+    } else {
         btnSearch.disabled = false
     }
 }
 
-function numericFormat(number){
+function numericFormat(number) {
     let numberParts = number.toString().split('.')
     numberParts[0] = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     return numberParts.join('.')
 }
-function actualizarCarrito(){
+function actualizarCarrito() {
     contenedorCarrito.innerHTML = ''
     carrito.forEach(producto => {
         const div = document.createElement('div')
@@ -162,8 +183,8 @@ function actualizarCarrito(){
                 <div class="cart-data-container">
                     <div>
                         <p>${producto.name}</p>
-                        <p>Precio: ${producto.price}</p>
-                        <p>Cantidad: <span id="cantidad">${producto.discount}</span></p>
+                        <p>Precio: $${producto.discount ? numericFormat(Math.round((producto.price - (producto.price * producto.discount) / 100))) : producto.price}</p>
+                        <p>Cantidad: <span id="cantidad">${producto.cantidad}</span></p>
                     </div>
                     <div>
                         <img src="${producto.url_image ? producto.url_image : './src/img/not_found_image.jpg'}" style="height: 8rem; border-radius: 0.5rem;">
@@ -176,8 +197,31 @@ function actualizarCarrito(){
         `
         contenedorCarrito.appendChild(div)
     });
+    totalPrice.innerText = '$' + numericFormat(carrito.reduce((acc, prod) => acc + ((prod.discount ? (prod.price - (prod.price * prod.discount) / 100) : prod.price) * prod.cantidad), 0))
 }
 
-$('#open-cart').on('click', function(){
+$('#open-cart').on('click', function () {
     $('#ventana-modal').modal()
+    emptyCartVerify()
 })
+function eliminarDelCarrito(product_id) {
+    const producto = carrito.find((prod) => prod.id === product_id)
+    const index = carrito.indexOf(producto)
+    for (let i = 0; i < carrito.length; i++) {
+        if(carrito[i].id === product_id){
+            carrito[i].cantidad = 1
+        }
+    }
+    carrito.splice(index, 1)
+    actualizarCarrito()
+    emptyCartVerify()
+}
+function emptyCartVerify() {
+    if (!document.getElementById('carrito-contenedor').children.length) {
+        contenedorCarrito.innerHTML = `
+            <div class="alert alert-warning" role="alert">
+                <center style="font-weight: bold;">Agrega un producto al carrito 🥸</center>
+            </div>
+        `
+    }
+}
