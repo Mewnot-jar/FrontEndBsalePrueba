@@ -86,3 +86,12 @@ header nav{
     justify-content: space-around;
     margin-bottom: 1rem;
 }
+.page-container{
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+}
+.div-alert{
+    display: flex;
+    justify-content: center;
+}
