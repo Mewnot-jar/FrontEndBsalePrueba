@@ -9,6 +9,7 @@ const loadingContainer = document.getElementById('loading-container')
 const cartContainer = document.getElementById('cart-container')
 const clearButton = document.getElementById('clear-button')
 const totalPrice = document.getElementById('total-price')
+const payButton = document.getElementById('pay-button')
 let productsArray = []
 let cart = []
 var page_number = 1
@@ -267,6 +268,11 @@ function emptyCartVerify() {
                 <center style="font-weight: bold;">Agrega un producto al carrito 🥸</center>
             </div>
         `
+        payButton.style.display = 'none'
+        clearButton.disabled = true
+    }else{
+        payButton.style.display = ''
+        clearButton.disabled = false
     }
 }
 
