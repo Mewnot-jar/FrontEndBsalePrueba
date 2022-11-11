@@ -20,6 +20,10 @@ btnSearch.disabled = true
 
 //Listeners
 document.addEventListener('DOMContentLoaded', function () {
+    if(localStorage.getItem('cart')){
+        cart = JSON.parse(localStorage.getItem('cart'))
+        updateCart()
+    }
     getProducts()
     getCategories()
 })
@@ -247,6 +251,7 @@ function updateCart() {
         `
         cartContainer.appendChild(div)
     });
+    localStorage.setItem('cart', JSON.stringify(cart))
     totalPrice.innerText = '$' + numericFormat(cart.reduce((acc, prod) => acc + ((prod.discount ? (prod.price - (prod.price * prod.discount) / 100) : prod.price) * prod.quantity), 0))
 }
 function removeFromCart(product_id) {
