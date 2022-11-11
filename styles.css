@@ -1,3 +1,9 @@
+main{
+    margin: 2rem;
+}
+header nav{
+    background-color: #e8eaec;
+}
 #contendor_carga{
     background-color: rgba(250, 240, 245, 0.9);
     height: 100%;
@@ -27,7 +33,6 @@
     -o-animation: girar 1.5s linear infinite;
     animation: girar 1.5s linear infinite;
 }
-
 @keyframes girar {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -42,12 +47,6 @@
     display:flex;
     justify-content: center;
     align-items: center;
-}
-main{
-    margin: 2rem;
-}
-header nav{
-    background-color: #e8eaec;
 }
 .container{
     background-color: #e8eaec;
