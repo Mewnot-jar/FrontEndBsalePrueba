@@ -10,6 +10,7 @@ const cartContainer = document.getElementById('cart-container')
 const clearButton = document.getElementById('clear-button')
 const totalPrice = document.getElementById('total-price')
 const payButton = document.getElementById('pay-button')
+const btnOpenCart = document.getElementById('open-cart')
 let productsArray = []
 let cart = []
 var page_number = 1
@@ -45,7 +46,7 @@ btnSearch.addEventListener('click', function (e) {
     searchProducts(inputSearch.value)
 })
 inputSearch.addEventListener('keyup', inputEmpty)
-$('#open-cart').on('click', function (e) {
+btnOpenCart.addEventListener('click', function(e){
     e.preventDefault()
     $('#cart-modal').modal()
     emptyCartVerify()
@@ -74,7 +75,7 @@ function getProducts(category = null) {
         })
 }
 function getCategories() {
-    fetch(`https://backendbsaleprueba-production.up.railway.app/api/fillCategories`)
+    fetch(`https://backendbsaleprueba-production.up.railway.app/api/categories`)
         .then(res => res.json())
         .then(data => {
             fillCategories(data)
@@ -279,7 +280,7 @@ function removeFromCart(product_id) {
     emptyCartVerify()
 }
 function emptyCartVerify() {
-    if (!cartContainer.children.length) {
+    if (!cart.length) {
         cartContainer.innerHTML = `
             <div class="alert alert-warning" role="alert">
                 <center style="font-weight: bold;">Agrega un producto al carrito 🥸</center>
